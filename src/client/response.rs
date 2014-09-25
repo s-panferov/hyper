@@ -65,6 +65,11 @@ impl Response {
             body: body,
         })
     }
+
+    /// Unwraps the Request to return the NetworkStream underneath.
+    pub fn unwrap(self) -> Box<NetworkStream + Send> {
+        self.body.unwrap().unwrap()
+    }
 }
 
 impl Reader for Response {
